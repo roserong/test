@@ -1,0 +1,42 @@
+const readline = require('readline-sync');
+
+var top=100;
+var bottom=0;
+var floorName=["B3","B2","B1","1","2","2M","3","5","6","7","8"]
+
+var currentFloor = 5; 
+var targetFloor; 
+
+while(true){
+    targetFloor = readline.question('目前在'+floorName[currentFloor]+'樓。請問要去那一層樓?');
+    targetFloor = targetFloor.toUpperCase();
+    targetFloor = floorName.indexOf(targetFloor); 
+    if(targetFloor<0){
+       console.log("請輸入介於"+floorName.toString()+"之間的樓層名稱!");
+       continue;
+    }
+    if(targetFloor==currentFloor){
+        console.log("離開電梯");
+        break;
+    }else{
+     if(targetFloor<currentFloor){ 
+        console.log("電梯往下...");
+            for(var i=currentFloor; i>targetFloor;i--){
+            for(; targetFloor<currentFloor;currentFloor--){
+            currentFloor = currentFloor - 1;
+             currentFloor -= 1;
+             currentFloor--;
+            console.log("電梯在"+floorName[currentFloor]+"樓");
+        }
+        
+     }else{
+        console.log("電梯往上...");
+       
+        do{    
+            currentFloor += 1;
+            currentFloor++;
+            console.log("電梯在"+floorName[currentFloor]+"樓");
+        }while(targetFloor > currentFloor);
+     }
+    }
+}
