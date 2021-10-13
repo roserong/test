@@ -2,10 +2,12 @@ const readline = require('readline-sync');
 
 var top=100;
 var bottom=0;
-var floorName=["B3","B2","B1","1","2","2M","3","5","6","7","8"]
+var floorName;
 
-var currentFloor = 5; 
+var currentFloor; 
 var targetFloor; 
+
+for(i=5,)
 
 while(true){
     targetFloor = readline.question('目前在'+floorName[currentFloor]+'樓。請問要去那一層樓?');
@@ -16,7 +18,8 @@ while(true){
        continue;
     }
     if(targetFloor==currentFloor){
-        Timeout console.log("離開電梯10s",10000);
+        setTimeout ("離開電梯10s",10000);
+        console.log("離開電梯10s");
         break;
     }else{
      if(targetFloor<currentFloor){ 
