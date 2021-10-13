@@ -1,0 +1,18 @@
+var poker=[];
+for(i=0,i<52,i++){
+    switch(i/13){
+    case 0:
+    poker.push("H"+(parseInt(i%13)+1))
+    break;
+    case 1:
+    poker.push("S"+(parseInt(i%13)+1))
+    break;
+    case 2:
+    poker.push("C"+(parseInt(i%13)+1))
+    break; 
+    case 3:
+    poker.push("D"+(parseInt(i%13)+1))
+    break;
+    }
+}
+console.log()
