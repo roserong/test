@@ -16,7 +16,7 @@ while(true){
        continue;
     }
     if(targetFloor==currentFloor){
-        console.log("離開電梯");
+        Timeout console.log("離開電梯10s",10000);
         break;
     }else{
      if(targetFloor<currentFloor){ 
