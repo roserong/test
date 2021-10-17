@@ -42,10 +42,6 @@ for (let i = 0; i < poker.length; ) {
 }
 function compare(a,b){
     if(b.charCodeAt(0) == a.charCodeAt(0)){
-        if(b.charCodeAt(1) == a.charCodeAt(1)){
-        }else{
-            return b.charCodeAt(1) - a.charCodeAt(1)
-        }
     }else{
         return b.charCodeAt(0) - a.charCodeAt(0)
     }
