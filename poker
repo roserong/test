@@ -42,7 +42,10 @@ for (let i = 0; i < poker.length; ) {
 }
 function compare(a,b){
     if(b.charCodeAt(0) == a.charCodeAt(0)){
-        //compare charAt(1), charAt(2)
+        if(b.charCodeAt(1) == a.charCodeAt(1)){
+        }else{
+            return b.charCodeAt(1) - a.charCodeAt(1)
+        }
     }else{
         return b.charCodeAt(0) - a.charCodeAt(0)
     }
@@ -63,4 +66,3 @@ console.log("Player3:"+player3)
 console.log("Player4:"+player4)
 player4.sort(compare)
 console.log("Player4:"+player4)
-
