@@ -1,45 +1,55 @@
 const readline = require('readline-sync');
 
-var top=100;
+var top=54;
 var bottom=0;
-var floorName;
+var newF=10;
+var goF;
+var nameF=[];
 
-var currentFloor; 
-var targetFloor; 
-
-for(i=5,)
+for(i=0,p=0;i<5;i++){
+    p=5-i;
+    nameF[i]="B"+p;   //B1-B5
+}
+for(i=5,p=-4;i<55;i++){
+    nameF[i]=i+p+'';   //1-50
+}
 
 while(true){
-    targetFloor = readline.question('目前在'+floorName[currentFloor]+'樓。請問要去那一層樓?');
-    targetFloor = targetFloor.toUpperCase();
-    targetFloor = floorName.indexOf(targetFloor); 
-    if(targetFloor<0){
-       console.log("請輸入介於"+floorName.toString()+"之間的樓層名稱!");
-       continue;
+    goF=readline.question('現在是'+nameF[goF]+'樓，請輸入欲到達樓層');
+    goF=goF.toUpperCase();   //英文轉大寫
+    goF=nameF.indexOf(goF);   //從floorName.indexOf()取出索引值，若為-1代表無此樓層
+
+    if(goF<0){
+        console.log('樓層錯誤，請再次輸入。請輸入介於'+nameF.toString()+'之間的樓層名稱!');
+        continue;   //回到while的第一行
     }
-    if(targetFloor==currentFloor){
+
+    if(goF>newF){
+        console.log('電梯上樓中')
+        for(;goF>newF;){
+            newF++;
+            if(goF==newF){
+                console.log('已到達目的地樓層'+nameF[newF])
+            }else{
+                console.log('電梯目前在'+nameF[newF]+'樓，移動中')
+            }
+        }
+    }
+    if(goF<newF){
         setTimeout ("離開電梯10s",10000);
         console.log("離開電梯10s");
         break;
-    }else{
-     if(targetFloor<currentFloor){ 
-        console.log("電梯往下...");
-            for(var i=currentFloor; i>targetFloor;i--){
-            for(; targetFloor<currentFloor;currentFloor--){
-            currentFloor = currentFloor - 1;
-             currentFloor -= 1;
-             currentFloor--;
-            console.log("電梯在"+floorName[currentFloor]+"樓");
-        }
-        
-     }else{
-        console.log("電梯往上...");
-       
-        do{    
-            currentFloor += 1;
-            currentFloor++;
-            console.log("電梯在"+floorName[currentFloor]+"樓");
-        }while(targetFloor > currentFloor);
-     }
     }
+    if(goF<newF){
+        console.log('電梯下樓中')
+        for(;goF<newF;){
+            newF--;
+            if(goF==newF){
+                console.log('已到達目的地樓層'+nameF[newF])
+            }else{
+                console.log('電梯目前在'+nameF[newF]+'樓，移動中')
+            }
+        }
+    }
+    break;
 }
