@@ -24,19 +24,19 @@ function compare(a,b){
 poker.sort(compare);
 console.log(poker.toString()); 
 
-for(var i=0;i<52;i++){
+for(var i=0;i<poker.length;i++){
     switch(parseInt(i/13)){
         case 0:
-            player1.push(poker(compare));
+            player1.push(poker[i]);
             break;
         case 1:
-            player2.push(poker(compare));
+            player2.push(poker[i]);
             break;
         case 2:
-            player3.push(poker(compare));
+            player3.push(poker[i]);
             break;
         case 3:
-            player4.push(poker(compare));
+            player4.push(poker[i]);
 
     }
    
