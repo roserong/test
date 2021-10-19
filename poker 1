@@ -40,15 +40,23 @@ for (let i = 0; i < poker.length; ) {
     poker.splice(rand,1);
     
 }
-function compare(a,b){
-    if(b.charCodeAt(0) == a.charCodeAt(0) && b.charCodeAt(1) != a.charCodeAt(1)){
-            return b.charCodeAt(1) - a.charCodeAt(1)
-       
-    }else if(b.charCodeAt(0) != a.charCodeAt(0)){
-        return b.charCodeAt(0) - a.charCodeAt(0)
+function compare(b,a){   
+    if(a.charCodeAt(0) == b.charCodeAt(0)){  
+        if(isNaN(a.charCodeAt(2))&&isNaN(b.charCodeAt(2))){ 
+            return a.charCodeAt(1) - b.charCodeAt(1)
+        }else if(isNaN(a.charCodeAt(2))||isNaN(b.charCodeAt(2))){  
+            if(isNaN(a.charCodeAt(2))){
+                return -1
+            }else{
+                return 1
+            }
+        }else{  
+            return a.charCodeAt(2) - b.charCodeAt(2)
+        }
+    }else{
+        return a.charCodeAt(0) - b.charCodeAt(0)
     }
 }
-
 console.log("Player1:"+player1)
 player1.sort(compare);
 console.log("Player1:"+player1)
