@@ -3,11 +3,11 @@ function bracketMatch(inputString) {
     var isMatched = true;
     var i = 0;
     var symbol = inputString.charAt(i);
-    while (isMatched && symbol != '\n') {
+    while (isMatched && symbol != '') {
         if (symbol == '{' || symbol == '(' || symbol == '[')
             opening.push(symbol);
         if (symbol == '}' || symbol == ')' || symbol == ']') {
-            if (opening.length == 0) //stack empty?(測試是否堆疊為空字元?)
+            if (opening.length == 0) //stack empty?(測試是否堆疊為空?)
                 isMatched = false;
             else {
                 match = opening.pop();
