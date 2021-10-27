@@ -1,5 +1,5 @@
 function bracketMatch(inputString) {
-    var opening = []; //stack
+    var opening = []; //stack(堆疊)
     var isMatched = true;
     var i = 0;
     var symbol = inputString.charAt(i);
@@ -7,7 +7,7 @@ function bracketMatch(inputString) {
         if (symbol == '{' || symbol == '(' || symbol == '[')
             opening.push(symbol);
         if (symbol == '}' || symbol == ')' || symbol == ']') {
-            if (opening.length == 0) //stack empty?
+            if (opening.length == 0) //stack empty?(測試是否堆疊為空字元?)
                 isMatched = false;
             else {
                 match = opening.pop();
