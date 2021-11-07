@@ -35,7 +35,7 @@ while(true){
             }
         }
     }
-    if(goF<newF){
+    if(goF==newF){
         setTimeout ("離開電梯10s",10000);
         console.log("離開電梯10s");
         break;
