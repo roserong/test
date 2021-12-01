@@ -128,3 +128,12 @@ function next(){
     game.update();
     gameBorad.draw();
 }
+function clickHandler(event){
+    var col = Math.floor(event.offsetX/gameBorad.size);
+    var row = Math.floor(event.offsetY/gameBorad.size);
+    if(game.getStatusAt(row, col)== LIVE)
+       game.setStatusAt(row,col, DEAD);
+    else
+        game.setStatusAt(row,col, LIVE);
+    gameBorad.draw();
+}
