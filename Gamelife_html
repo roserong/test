@@ -15,6 +15,7 @@
 <body>
     <canvas id="gameBorad" width="600" height="600"  onclick="clickHandler(event)"></canvas>
     <button onclick="next()" >Next</button>
+    <button onclick="random()" >Random</button>
 </body>
 <script src="Life.js">
     // var canvas = document.getElementById("gameBorad");
