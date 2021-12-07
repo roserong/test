@@ -59,6 +59,16 @@ Life.prototype.neighborCount = function(row, col){
     count += this.getStatusAt(row+1, col+1);
     return count;
 }
+Life.prototype.rd = function(){
+    for (var r = 0; r < this.row; r++) {
+        for (var c = 0; c < this.col; c++) {
+            var isLive = Math.round(Math.random());
+            if (isLive == 1) {
+                this.grid[r][c] = LIVE;
+            }
+        }
+    }
+}
 //進行下個世代
 Life.prototype.update = function(){
     // var nextGrid = new Array();
@@ -128,12 +138,7 @@ function next(){
     game.update();
     gameBorad.draw();
 }
-function clickHandler(event){
-    var col = Math.floor(event.offsetX/gameBorad.size);
-    var row = Math.floor(event.offsetY/gameBorad.size);
-    if(game.getStatusAt(row, col)== LIVE)
-       game.setStatusAt(row,col, DEAD);
-    else
-        game.setStatusAt(row,col, LIVE);
+function random(){
+    game.rd();
     gameBorad.draw();
 }
