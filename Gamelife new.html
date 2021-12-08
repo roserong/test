@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        width: 600px;
+        height: 100%;
+        margin: auto;
+    }
+</style>
+<body>
+    <canvas id="gameBorad" width="600" height="600" onclick="clickHandler(event)"></canvas>
+    <button onclick="next()" >Next</button>
+    <input id="timeGap" type="number" max="1000" min="100" step="100" value="500">
+    <button id = "btnRun"onclick="run()" >Run</button>
+    <button id = "btnStop"onclick="stop()" disabled>Stop</button>
+    <button onclick="random()" >Random</button>
+</body>
+<script src="Life.js">
+    // var canvas = document.getElementById("gameBorad");
+    // var ctx2d = canvas.getContext("2d");
+    // ctx2d.fillStyle = "#ff0000";
+    // ctx2d.fillRect(10,10,50,50);
+    // ctx2d.lineWidth = 2;
+    // ctx2d.strokeRect(50,50,50,50);
+</script>
+</html>
