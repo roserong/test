@@ -1,3 +1,4 @@
+//製作一副鋪克牌
 var poker=[];
 for(var i=0;i<52;i++){
     switch(parseInt(i/13)){
@@ -17,10 +18,11 @@ for(var i=0;i<52;i++){
 }
 console.log(poker.toString());
 var player1=[], player2=[], player3=[],player4=[];
-
+//打亂
 for (let i = 0; i < poker.length; ) {
     var rand = Math.floor(Math.random() * poker.length);
-    
+//分配
+//splice 刪除/取代
     player1.push(poker[rand]);
     poker.splice(rand,1);
 
@@ -40,6 +42,9 @@ for (let i = 0; i < poker.length; ) {
     poker.splice(rand,1);
     
 }
+//排序
+//isNaN 判斷是否為非字元
+//由大排到小
 function compare(b,a){   
     if(a.charCodeAt(0) == b.charCodeAt(0)){  
         if(isNaN(a.charCodeAt(2))&&isNaN(b.charCodeAt(2))){ 
