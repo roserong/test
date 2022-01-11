@@ -1,5 +1,5 @@
 const LIVE=1, DEAD=0; 
-
+//創建二元陣列
 class Life {
     constructor(_row,_col){
         this.row = _row;
@@ -20,14 +20,15 @@ class Life {
     // }
 
 };
-
+//初始化(test)
 Life.prototype.Initialize = function(){
     this.grid[3][4] = LIVE;
     this.grid[3][5] = LIVE;
     this.grid[3][6] = LIVE;
     //this.grid[3][7] = LIVE;
 }
-
+//取得狀態值
+//設立row跟col的範圍
 Life.prototype.getStatusAt = function(row, col){
     if(row<0 || col <0)
        return DEAD;
@@ -35,6 +36,7 @@ Life.prototype.getStatusAt = function(row, col){
        return DEAD;
     return this.grid[row][col];
 }
+//設定狀態值
 Life.prototype.setStatusAt = function(row, col, status){
     if(row<0 || col <0)
        return false;
@@ -43,6 +45,7 @@ Life.prototype.setStatusAt = function(row, col, status){
     this.grid[row][col]=status;
     return true;
 }
+//計算鄰居個數及位置
 Life.prototype.neighborCount = function(row, col){
     var count=0;
     count += this.getStatusAt(row-1, col-1);
@@ -55,16 +58,7 @@ Life.prototype.neighborCount = function(row, col){
     count += this.getStatusAt(row+1, col+1);
     return count;
 }
-Life.prototype.rd = function(){
-    for (var r = 0; r < this.row; r++) {
-        for (var c = 0; c < this.col; c++) {
-            var isLive = Math.round(Math.random());
-            if (isLive == 1) {
-                this.grid[r][c] = LIVE;
-            }
-        }
-    }
-}
+//下一世代
 Life.prototype.update = function(){
     // var nextGrid = new Array();
     // for (let r = 0; r < this.row; r++) {
@@ -75,7 +69,7 @@ Life.prototype.update = function(){
     // }
     // this.grid; //no duplicate /copy
     var nextGrid = JSON.parse(JSON.stringify(this.grid));
-
+//存活條件
     for (let r = 0; r < this.row; r++) {
         for (let c = 0; c < this.col; c++) {
             var nCount = this.neighborCount(r, c);
@@ -88,7 +82,7 @@ Life.prototype.update = function(){
     this.grid = nextGrid;//OK?
 
 }
-
+//設定網頁介面內容
 class Board{
     constructor(_life){
         this.game = _life;
@@ -97,7 +91,7 @@ class Board{
         this.ctx2d.fillStyle = "#ff0000";
         this.ctx2d.lineWidth = 0.5;
     }
-
+//畫格子
     draw(){
         this.ctx2d.clearRect(0,0,600,600);
        for (let r = 0; r < this.game.row; r++) {
@@ -117,7 +111,7 @@ class Board{
        } 
     }
     drawPoint(row,col){
-        //judge row & col are in suitable range
+        //判斷 row & col 在合適的範圍內
         this.ctx2d.clearRect(col*this.size, row*this.size, this.size, this.size);
         if(this.game.getStatusAt(row,col)==LIVE){
             this.ctx2d.fillRect(col*this.size, row*this.size, this.size, this.size);
@@ -142,11 +136,7 @@ function next(){
     game.update();
     gameBorad.draw();
 }
-
-function random(){
-    game.rd();
-    gameBorad.draw();
-}
+//讓使用者可以自由設定細胞生死
 function clickHandler(event){
     var col = Math.floor(event.offsetX/gameBorad.size);
     var row = Math.floor(event.offsetY/gameBorad.size);
@@ -158,7 +148,7 @@ function clickHandler(event){
 }
 
 var timer;
-
+//不讓Run&Stop同時運作
 function run(){
     var gap = document.getElementById("timeGap");
     timer = setInterval(next, gap.value);
